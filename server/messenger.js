@@ -44,6 +44,7 @@ mongoClient.connect((err) => {
         db.collection('tweets').deleteOne({_id: ObjectID(req.query.id)})
             .then(() => console.log('success'))
             .catch((e) => console.log(e));
+          res.redirect('/');
     });
 
     app.listen(5000);
