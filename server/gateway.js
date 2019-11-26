@@ -39,12 +39,18 @@ appServer.on('upgrade', (req, socket, head) => {
     wsProxy.ws(req, socket, head);
   });
   
-  const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
-  console.log(`Front end proxies to: ${fronEndHost}`);
-  app.all('/*', (req, res) => {
-    // for frontend
-    apiProxy.web(req, res, { target: fronEndHost });
-  });
-  
-  appServer.listen(4000);
-  console.log('Gateway started');
+const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
+console.log(`Front end proxies to: ${fronEndHost}`);
+app.all('/*', (req, res) => {
+// for frontend
+apiProxy.web(req, res, { target: fronEndHost });
+});
+
+const userHost = process.env.USER_HOST || 'http://localhost:3002';
+console.log(`User end proxies to: ${userHost}`);
+app.all('/profile*', (req, res) => {
+  apiProxy.web(req, res, { target: userHost });
+});
+
+appServer.listen(4000);
+console.log('Gateway started');
