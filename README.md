@@ -27,3 +27,7 @@
 
 
 
+# Getting the app up and running
+- Install dependencies: 
+ - react `npm i -S react`
+ - react thunk `npm i -S react-thunk`
