@@ -1,42 +1,53 @@
 import React from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
+//import Button from 'react-bootstrap/Button';
 import Login from './pages/login';
+import Home from './pages/home';
+import Profile from './pages/profile';
+import Favorites from './pages/favorites';
+import Register from './pages/register';
 
 
 
-const App = ({ username }) => {
+function App() {
   return (
+  <BrowserRouter>
     <div className="App">
-      <div className="navbar navbar-expand navbar-dark bg-dark">
-        <Link className="navbar-brand"  to="/">Home</Link>
-        <div className="collapse navbar-collapse"> 
-          <ul className="navbar-nav mr-auto">
-            {username === 'guest' && (
-              <li className="nav-item active">
-                <Link className="nav-link" to="/login">Login</Link>
-              </li>
-            )}
-            {username === 'guest' && (
-              <li className="nav-item active">
-                <Link className="nav-link" to="/register">Register</Link>
-              </li>
-            )}
-            {username !== 'guest' && (
-              <li className="nav-item active">
-                <Link className="nav-link" to="/notes">Notes</Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>      
+      <header className="nav-bar">
+
+        {/* Links */}
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="/favorites">Favorites</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+         
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </header>
+
+      {/* Route Paths */}
       <Switch>
-        
-        <Route path="/login" component={Login} />
-        
-  
+        <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/favorites" component={ Favorites } />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/register" component={ Register } /> 
+        <Route exact path="/home" component={ Home } />
       </Switch>
+
     </div>
+    </BrowserRouter>
   );
 }
 
