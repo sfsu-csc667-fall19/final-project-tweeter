@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Splashpage = () => {
+const Register = () => {
     return(
         <h2>Register: </h2>
     );
 };
 
-export default Splashpage;
+export default Register;
 
 
 /*import React from 'react';
