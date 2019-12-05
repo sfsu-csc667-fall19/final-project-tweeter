@@ -1,29 +1,51 @@
 import React from 'react';
-import {Route, Switch } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import {Router, Switch, PrivateRoute, Route } from 'react-router-dom';
+import Redirect from 'react';
 import Login from './pages/login';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Welcome to Tweeter.
-        </p>
-       
+import Register from './pages/register';
 
-      </header>
-      <div>
-      <Button variant= "primary" size = "lg" onClick={Login}>login</Button>
-      <Button variant = "primary" size="lg">Register</Button>
+class App extends React.Component {
+  constructor(props) {
+      super(props);
 
-      </div>
-      <Switch>
-        <Route path = "/register" component/>
-        <Route path="/login" component={Login}/>
-        <Route path="/feed" component/>
-      </Switch>
-    </div>
-  );
+      // history.listen((location, action) => {
+      //     // clear alert on location change
+      //     this.props.clearAlerts();
+      // });
+  }
+
+  render() {
+      const { alert } = this.props;
+      return (
+          <div className="jumbotron">
+              <div className="container">
+                  <div className="col-sm-8 col-sm-offset-2">
+                      {alert.message &&
+                          <div className={`alert ${alert.type}`}>{alert.message}</div>
+                      }
+                      <Router >
+                          <Switch>
+                              <PrivateRoute exact path="/" />
+                              <Route path="/login" component={Login} />
+                              <Route path="/register" component={Register} />
+                              <Redirect from="*" to="/" />
+                          </Switch>
+                      </Router>
+                  </div>
+              </div>
+          </div>
+      );
+  }
 }
 
-export default App;
+function mapState(state) {
+  const { alert } = state;
+  return { alert };
+}
+
+const actionCreators = {
+  clearAlerts: alertActions.clear
+};
+
+const connectedApp = connect(mapState, actionCreators)(App);
+export { connectedApp as App };
