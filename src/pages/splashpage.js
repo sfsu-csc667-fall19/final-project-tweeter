@@ -1,5 +1,16 @@
 import React from 'react';
 
+const Splashpage = () => {
+    return(
+        <h2>Register: </h2>
+    );
+};
+
+export default Splashpage;
+
+
+/*import React from 'react';
+
 
 class Register extends React.component{
 
@@ -15,3 +26,4 @@ class Register extends React.component{
 }
 
 export default Register;
+*/
