@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 
+
+
+
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -79,3 +82,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Register);
+
