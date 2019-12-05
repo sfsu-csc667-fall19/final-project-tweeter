@@ -6,7 +6,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Profile from './pages/profile';
 import Favorites from './pages/favorites';
-import register from './pages/register';
+import Register from './pages/register';
 
 
 
