@@ -23,6 +23,8 @@ class Register extends React.component{
             password:''
         }
     }
+
+    
 }
 
 export default Register;

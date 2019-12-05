@@ -52,7 +52,7 @@ function App() {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.userReducer.isLoggedIn,
+  username: state.userReducer.username,
 });
 
 export default connect(mapStateToProps)(App);
