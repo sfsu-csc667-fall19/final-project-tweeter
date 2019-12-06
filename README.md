@@ -26,7 +26,22 @@
 - Distributed messaging can be done with either kafka or redis
 
 
-Kafka Lab
+# Kafka 
+Get latest images
+- docker-compose pull 
+
+# Start services
+- docker swarm init
+- docker stack deploy -c docker-compose.yml kafka-demo
+
+# Run Kafka files
+- node server/kafkaTweet/producerKafka.js
+- node server/kafkaTweet/consumerKafka.js
+
+# MongoDB
+- go to the mongodb directory
+- Manually start with bin/mongod --dbpath <path to db>
+
 
 
 
