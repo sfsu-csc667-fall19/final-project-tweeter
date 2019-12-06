@@ -9,7 +9,7 @@
 
 # Project team members
 - Front end - Hale, Jesus, Jason
-- Back end - Deep, Kevin, Bakulia
+- Back end - Deep, Kevin, Bakulia, Sam
 - Github master - Kevin
 
 # Tech Requirements for project:
@@ -24,6 +24,10 @@
 - Backend components must be dockerized and running in Docker swarm mode
 - Kafka for at least 1 conveyer
 - Distributed messaging can be done with either kafka or redis
+
+
+Kafka Lab
+
 
 
 
