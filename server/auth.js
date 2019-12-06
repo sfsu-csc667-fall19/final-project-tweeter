@@ -17,8 +17,7 @@ app.get("/auth/login", (req, res) => {
         authUtils.authenticateUser(req.query.username, req.query.password, (result) => {
             // If we need to register a token, we should do so here
             res.send({
-                success: result,
-                message: "Unspecified error"
+                success: result
             });
         });
     } else {
@@ -30,10 +29,19 @@ app.get("/auth/login", (req, res) => {
 });
 
 // Handles account registration
-app.post("/auth/register", (req, res) => {
+app.get("/auth/register", (req, res) => {
     if (req.query.username && req.query.password) {
         authUtils.registerAccount(req.query.username, req.query.password, (result) => {
-
+            if (result) {
+                res.send({
+                    success: true
+                });
+            } else {
+                res.send({
+                    success: false,
+                    message: result
+                });
+            }
         });
     } else {
         res.send({
@@ -45,4 +53,4 @@ app.post("/auth/register", (req, res) => {
 
 app.listen(port, () => {
     console.log(`Now listening on port localhost:${port}!`);
-})
+});
