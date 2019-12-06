@@ -11,10 +11,10 @@ let port = 3001; // might need to be changed
 const app = express();
 
 // Handles account logging in
-app.get("/auth/login", (req, res) => {
-    if (req.query.username && req.query.password) {
+app.post("/auth/login", (req, res) => {
+    if (req.body.username && req.body.password) {
         // verify credentials
-        authUtils.authenticateUser(req.query.username, req.query.password, (result) => {
+        authUtils.authenticateUser(req.body.username, req.body.password, (result) => {
             // If we need to register a token, we should do so here
             res.send({
                 success: result
@@ -29,9 +29,9 @@ app.get("/auth/login", (req, res) => {
 });
 
 // Handles account registration
-app.get("/auth/register", (req, res) => {
-    if (req.query.username && req.query.password) {
-        authUtils.registerAccount(req.query.username, req.query.password, (result) => {
+app.post("/auth/register", (req, res) => {
+    if (req.body.username && req.body.password) {
+        authUtils.registerAccount(req.body.username, req.body.password, (result) => {
             if (result) {
                 res.send({
                     success: true
