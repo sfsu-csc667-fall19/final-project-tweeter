@@ -1,9 +1,8 @@
 import React from 'react';
-//import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 //import md5 from 'md5';
-//import { loginUser } from '../redux/actions/userActions';
+import { loginUser} from '../redux/actions/userActions';
 
 
 class Login extends React.Component {
@@ -18,8 +17,8 @@ class Login extends React.Component {
   }
   
   submitForm = () => {
-    // console.log(this.state.form.username);
-    // console.log(md5(this.state.form.password));
+    console.log(this.state.form.username);
+    console.log(this.state.form.password);
 
     const body = {
       username: this.state.form.username, 
@@ -33,7 +32,7 @@ class Login extends React.Component {
         document.cookie = 'password=password';
 
         if (res.data.status === 'success') {
-          this.props.dispatch(res.datanpm)
+          //this.props.dispatch(res.datanpm)
           document.cookie = `username=${this.state.form.username}`; //set cookies with key/value pairs
           document.cookie = `password=${this.state.formpassword}`; //set cookies with key/value pairs
         } else {
@@ -47,7 +46,8 @@ class Login extends React.Component {
     return (
       <div>
         <div className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+          <h1 className="h3 mb-3 font-weight-normal">Welcome to Tweeter</h1>
+          <h3 className = "h5 mb-5 font-weight-normal"> Please Login</h3>
           <label className="sr-only">Username</label>
           <input onChange={e => this.setState({ form: { ...this.state.form, username: e.target.value } })} 
                   value={this.state.form.username} 
@@ -68,7 +68,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  notes: state.notesReducer.notes
+  
 });
 
 export default connect(mapStateToProps)(Login);
