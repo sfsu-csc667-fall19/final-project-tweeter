@@ -10,31 +10,41 @@ import { Home } from './pages/home';
 import { Favorites } from './pages/favorites';
 import { Logout } from './pages/logout';
 import { Profile } from './pages/profile';
+import Splash from './pages/splash';
 
 import Logo from './components/Logo';
 import Sidebar from './components/Sidebar';
 
 
 
-function App() {
+const App = ({ loginUser }) => {
   return (
 
     <React.Fragment>
       <Router>
-        <NavigationBar />
-        <Logo />
-        <Sidebar />
+        
+        {/* Checks whether user is logged in to display needed components */}
+        {!loginUser && (
+          <Splash />
+        )}
+        {loginUser && (
+          <div>
+          <NavigationBar />
+          <Logo />
+          <Sidebar />
+          </div>
+        )}
 
-
-
-
+        {/* Can only access after logged in */}
+        {loginUser && (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/profile" component={Profile} />
           <Route path="/favorites" component={Favorites} />
           <Route path="/logout" component={Logout} />
-
         </Switch>
+        )}
+
       </Router>
     </React.Fragment>
     
