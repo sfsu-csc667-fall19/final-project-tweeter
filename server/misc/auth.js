@@ -25,7 +25,7 @@ const authenticateUser = (username, password, callback) => {
                 // We want to check for the specific parameters:
                 let params = {
                     username: username,
-                    password: password
+                    password: password,
                 };
 
                 // Count the number of records with these details
@@ -45,7 +45,7 @@ const authenticateUser = (username, password, callback) => {
 
 // Registers a new account with a specified username and password
 // Checks redis & db first
-const registerAccount = (username, password, callback) => {
+const registerAccount = (username, password, firstName, lastName, callback) => {
     redisClient.get(`login_${username}`, (err, rep) => {
         // We want this to be null because we don't want the record to exist
         if (rep === null) {
@@ -73,6 +73,8 @@ const registerAccount = (username, password, callback) => {
                     let data = {
                         username: username,
                         password: password,
+                        first_name: firstName,
+                        last_name: lastName,
                     };
                     // Account doesn't exist, so we can safely create it
                     dbo.collection(USER_TABLE).insertOne(data, (err, result) => {

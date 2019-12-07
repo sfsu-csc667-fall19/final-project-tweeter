@@ -34,25 +34,27 @@ app.post("/auth/login", (req, res) => {
 // Handles account registration
 app.post("/auth/register", (req, res) => {
     const requiredFields = ["username", "first_name", "last_name", "password"];
-    if (req.body.username && req.body.password) {
-        authUtils.registerAccount(req.body.username, req.body.password, (result) => {
-            if (result) {
-                res.send({
-                    success: true
-                });
-            } else {
-                res.send({
-                    success: false,
-                    message: result
-                });
-            }
-        });
-    } else {
-        res.send({
-            success: false,
-            message: "Username and password not specified."
-        });
+    for (let i = 0; i < requiredFields.length; i++) {
+        if (req.body[requiredFields[i]] === null) {
+            res.send({
+                success: false,
+                message: "Required fields not set."
+            });
+            return;
+        }
     }
+    authUtils.registerAccount(req.body.username, req.body.password, req.body.first_name, req.body.last_name, (result) => {
+        if (result) {
+            res.send({
+                success: true
+            });
+        } else {
+            res.send({
+                success: false,
+                message: result
+            });
+        }
+    });
 });
 
 app.listen(port, () => {
