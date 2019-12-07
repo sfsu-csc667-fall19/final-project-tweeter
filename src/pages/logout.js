@@ -8,9 +8,9 @@ const Wrapper = styled.div`
 `; 
 
 
-export const Home = () => (
+export const Logout = () => (
   <Wrapper>
-    <div><h2>Home Page</h2>
+    <div><h2>Logout Page</h2>
     <p>bunch of random text here</p>
     </div>
   </Wrapper>
