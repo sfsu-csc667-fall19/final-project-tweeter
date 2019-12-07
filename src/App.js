@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import Button from 'react-bootstrap/Button';
 import Login from './pages/login';
-//import Home from './pages/home';
 import Register from './pages/register';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -36,47 +34,10 @@ function App() {
           <Route path="/favorites" component={Favorites} />
           <Route path="/logout" component={Logout} />
 
-          {/*<Route component={NoMatch} />*/}
         </Switch>
       </Router>
     </React.Fragment>
-    /*
-      <BrowserRouter>
-      
-        <div className="App">
-          <header className="nav-bar">
-
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/favorites">Favorites</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
-          </header>
-
-          <Switch>
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/favorites" component={Favorites} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/home" component={Home} />
-          </Switch>
-
-        </div>
-      </BrowserRouter>
-      */
+    
   );
 }
 
