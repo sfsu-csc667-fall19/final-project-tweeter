@@ -66,7 +66,6 @@ const registerAccount = (username, password, callback) => {
                 // Check the database
                 dbo.collection(USER_TABLE).find(params).count((err, res) => {
                     if (res != 0) {
-                        console.log("already exists");
                         callback(false);
                         return;
                     }
@@ -79,9 +78,12 @@ const registerAccount = (username, password, callback) => {
                     dbo.collection(USER_TABLE).insertOne(data, (err, result) => {
                         if (err) {
                             callback(false);
-                            console.log(err);
                         } else {
-                            callback(true);
+                            // We should register the new account with redis, too
+                            redisClient.set(`login_${username}`, password, (err, reply) => {
+                                // We don't care about whether or not we actually set it in redis, because we set it in the database either way
+                                callback(true);
+                            });
                         }
                     });
                 })

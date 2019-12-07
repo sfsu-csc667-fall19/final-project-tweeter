@@ -12,24 +12,28 @@ const app = express();
 
 // Handles account logging in
 app.post("/auth/login", (req, res) => {
-    if (req.body.username && req.body.password) {
-        // verify credentials
-        authUtils.authenticateUser(req.body.username, req.body.password, (result) => {
-            // If we need to register a token, we should do so here
+    const requiredFields = ["username", "password"];
+    for (let i = 0; i < requiredFields.length; i++) {
+        if (req.body[requiredFields[i]] === null) {
             res.send({
-                success: result
+                success: false,
+                message: "Required fields not set."
             });
-        });
-    } else {
-        res.send({
-            success: false,
-            message: "Username and password not specified."
-        });
+            return;
+        }
     }
+    // verify credentials
+    authUtils.authenticateUser(req.body.username, req.body.password, (result) => {
+        // If we need to register a token, we should do so here
+        res.send({
+            success: result
+        });
+    });
 });
 
 // Handles account registration
 app.post("/auth/register", (req, res) => {
+    const requiredFields = ["username", "first_name", "last_name", "password"];
     if (req.body.username && req.body.password) {
         authUtils.registerAccount(req.body.username, req.body.password, (result) => {
             if (result) {
