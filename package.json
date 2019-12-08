@@ -8,6 +8,7 @@
     "docker-compose": "^0.23.1",
     "express": "^4.17.1",
     "kafka": "^0.2.3",
+    "mongodb": "^3.3.5",
     "mdbreact": "^4.23.0",
     "bootstrap": "^4.3.1",
     "react": "^16.12.0",
