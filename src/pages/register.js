@@ -12,9 +12,7 @@ const Wrapper = styled.div`
   margin-top: 1em;
   margin-left: 300px;
 `; 
-
-
-
+in
 
 
 class Register extends React.Component {
