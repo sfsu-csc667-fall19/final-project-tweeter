@@ -11,7 +11,7 @@ const options = {
     withCredentials: true
   };
 
-const Splash = ({ dispatch, isLoggedIn }) => {
+const Splash = ({ dispatch, loginUser }) => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -21,20 +21,20 @@ const Splash = ({ dispatch, isLoggedIn }) => {
         username: '',
         password: '',
       };
-      axios.post('/service2/', body, options)
+      axios.post('/profile/', body, options)
           .then((res) => {
             console.log(res)
           })
           .catch(console.log);
       }, []); // VERY IMPORTANT NEEDS THE EMPTY ARRAY
     
-    
+    // Post section for storing user input into MongoDB
     const verify = () => {
       const body = {
         username,
         password: password,
       };
-      axios.post('/service2/login', body, options)
+      axios.post('/profile/login', body, options)
         .then((res) => {
           if (res.data.valid) {
             document.cookie = `username=${username}`; //set cookies with key/value pairs
@@ -61,38 +61,59 @@ const Splash = ({ dispatch, isLoggedIn }) => {
         }
       };
 
-    if (isLoggedIn) {
+    if (loginUser) {
         return <Redirect to="/" />;
       }
 
     return (
         <div>
+            {/* Side logo of splash page */}
             <div className='logo-wrapper'>
                 <img className='logo' src={Image} alt='tweeter logo' />
             </div>
+
+            {/* Top login of splash page */}
             <div className='nav'>
-                    <ul>
-                        <li>
-                        <input placeholder='Username'
-                            value={username}
-                            onChange={e => updateEmail(e.target.value)}
-                        />
-                        </li>
-                        <li>
-                        <input placeholder='Password'
-                            type="password"
-                            value={password}
-                            onChange={e => updatePassword(e.target.value)}
-                        />
+                <ul>
+                    <li>
+                    <label className="sr-only">Username</label>
+                    <input 
+                        placeholder='Username'
+                        type="text"
+                        value={username}
+                        onChange={e => updateEmail(e.target.value)}
+                    />
+                    </li>
+                    <li>
+                    <label className="sr-only">Password</label>
+                    <input 
+                        placeholder='Password'
+                        type="password"
+                        value={password}
+                        onChange={e => updatePassword(e.target.value)}
+                    />
                         <p>Forgot Password?</p>
-                        </li>
-                        <li>
-                        <button onClick={verify}>Log in</button>
-                        </li>
-                     </ul>
+                    </li>
+                    <li>
+                        <button className="buttonFirst" onClick={verify}>Log in</button>
+                    </li>
+                    </ul>
                 </div>
+
+                {/* Body of Splash page */}
                 <div className='body'>
                     <h2>Tweeter</h2>
+                    <p className='join'>Join Tweeter today.</p>
+                    <div className="SignupLogin">
+                        <ul>
+                            <li>
+                            <button className="buttonSecond">Sign up</button>
+                            </li>
+                            <li>
+                            <button className="buttonThird">Log in</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
       );

@@ -35,7 +35,50 @@
 .body {
     position: fixed;
     text-align: center;
-    padding: 0 0 0 250px;
-    max-width: 50%;
+    padding: 0 0 0 130px;
+    max-width: 100%;
     max-height: 50%;
+}
+
+.join {
+    padding: 20px 0 0 30px;
+}
+
+.SignupLogin ul {
+    list-style: none;
+    float: left;
+    padding: 10px 0 0 120px;
+    max-width: 100%;
+    max-height: 50%;
+}
+
+.SignupLogin li {
+    margin: 20px 0;
+}
+
+/* Button styles */
+.buttonFirst {
+    border-radius: 25px;
+    background: white;
+    color: #115B49;
+    border-right: 1px solid #115B49;
+    width: 100px;
+}
+
+.buttonSecond {
+    border-radius: 25px;
+    background: #115B49;
+    color: white;
+    border-right: 1px solid #115B49;
+    width: 250px;
+    height: 40px;
+}
+
+.buttonThird {
+    border-radius: 25px;
+    background: white;
+    color: #115B49;
+    border-right: 1px solid #115B49;
+    width: 250px;
+    height: 40px;
 }
