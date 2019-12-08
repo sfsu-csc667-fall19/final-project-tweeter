@@ -8,6 +8,7 @@ const LogoWrapper = styled.div`
     height: 120px;
     width: 300px;     /* Set the width of the sidebar */
     z-index: 1;      /* Stay on top of everything */
+    left: 0;
     top: 0px;
     background-color: #d3d3d3; /* light grey */
     overflow-x: hidden;     /* Disable horizontal scroll */
