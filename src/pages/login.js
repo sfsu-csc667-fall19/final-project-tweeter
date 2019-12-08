@@ -5,6 +5,9 @@ import axios from 'axios';
 //import md5 from 'md5';
 //import { loginUser } from '../redux/actions/userActions';
 
+import Logo from '../components/Logo';
+import Sidebar from '../components/Sidebar';
+import { NavigationBar } from '../components/NavigationBar';
 
 class Login extends React.Component {
   constructor(props) {
@@ -46,6 +49,9 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+        <NavigationBar />
+        <Logo />
+        <Sidebar />
         <div className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal">Login</h1>
           <label className="sr-only">Username</label>

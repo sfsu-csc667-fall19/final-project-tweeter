@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser, isLoggedIn } from '../redux/actions/userActions';
+import { setIsLoggedIn } from '../redux/actions/userActions';
 import axios from 'axios';
 import './splash.css';
 import Image  from '../Logo.png';
@@ -63,8 +63,12 @@ const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
         }
       };
 
+      const check = () => {
+        dispatch(setIsLoggedIn(true));
+      };
+
     if (isLoggedIn) {
-        return <Redirect to="/" />;
+        return <Redirect to="/home" />;
       }
 
     return (
@@ -112,7 +116,7 @@ const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
                             <button className="buttonSecond">Sign up</button>
                             </li>
                             <li>
-                            <button className="buttonThird">Log in</button>
+                            <button className="buttonThird" onClick={check}>Log in</button>
                             </li>
                         </ul>
                     </div>

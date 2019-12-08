@@ -24,9 +24,6 @@ const App = ({ isLoggedIn }) => {
       <Router>
         
         {/* Checks whether user is logged in to display needed components */}
-        {!isLoggedIn && (
-          <Splash />
-        )}
         {isLoggedIn && (
           <div>
           <NavigationBar />
@@ -34,16 +31,18 @@ const App = ({ isLoggedIn }) => {
           <Sidebar />
           </div>
         )}
+        {!isLoggedIn && (
+          <Splash />
+        )}
 
         {/* Can only access after logged in */}
-        {isLoggedIn && (
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/profile" component={Profile} />
           <Route path="/favorites" component={Favorites} />
           <Route path="/logout" component={Logout} />
+          <Route exact path="/" />
         </Switch>
-        )}
 
       </Router>
     </React.Fragment>

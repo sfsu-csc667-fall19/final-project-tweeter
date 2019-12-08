@@ -13,7 +13,7 @@ const DEFAULT_STATE = {
       case 'SET_IS_LOGGED_IN':
         return {
           ...state,
-          isLoggedIn: action.isLoggedin,
+          isLoggedIn: action.isLoggedIn,
         }
       case 'USER_LOGGED_OUT':
         return DEFAULT_STATE;
