@@ -2,7 +2,6 @@ const app = express();
 const server = require('http');
 const httpProxy = require('http-proxy');
 
-const app = express();
 const appServer = server.createServer(app);
 const apiProxy = httpProxy.createProxyServer(app);
 
