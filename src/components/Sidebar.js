@@ -8,11 +8,11 @@ const StyledSideNav = styled.div`
     width: 300px;     /* Set the width of the sidebar */
     z-index: 1;      /* Stay on top of everything */
     top: 120px;
+    left: 0;
     background-color: #d3d3d3; /* light grey */
     overflow-x: hidden;     /* Disable horizontal scroll */
     padding-top: 10px;
     border-right: 2px solid grey;
-
 `;
 
 class SideNav extends React.Component {
@@ -22,7 +22,7 @@ class SideNav extends React.Component {
             activePath: props.location.pathname,
             items: [
                 {
-                  path: '/', /* path is used as id to check which NavItem is active basically */
+                  path: '/Home', /* path is used as id to check which NavItem is active basically */
                   name: 'Home',
                   //css: 'fa fa-fw fa-home',
                   text: "Home",
