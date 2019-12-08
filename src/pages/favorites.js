@@ -1,9 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Favorites = () => {
-    return(
-        <h2>Favorites: </h2>
-    );
-};
+const Wrapper = styled.div`
+  display: block;
+  margin-top: 1em;
+  margin-left: 300px;
+`; 
 
-export default Favorites;
+
+export const Favorites = () => (
+  <Wrapper>
+    <div><h2>Home Page</h2>
+    <p>bunch of random text here</p>
+    </div>
+  </Wrapper>
+)
