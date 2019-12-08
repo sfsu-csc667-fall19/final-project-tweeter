@@ -17,17 +17,17 @@ import Sidebar from './components/Sidebar';
 
 
 
-const App = ({ loginUser }) => {
+const App = ({ isLoggedIn }) => {
   return (
 
     <React.Fragment>
       <Router>
         
         {/* Checks whether user is logged in to display needed components */}
-        {!loginUser && (
+        {!isLoggedIn && (
           <Splash />
         )}
-        {loginUser && (
+        {isLoggedIn && (
           <div>
           <NavigationBar />
           <Logo />
@@ -36,7 +36,7 @@ const App = ({ loginUser }) => {
         )}
 
         {/* Can only access after logged in */}
-        {loginUser && (
+        {isLoggedIn && (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/profile" component={Profile} />

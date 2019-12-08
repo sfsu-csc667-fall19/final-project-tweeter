@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser } from '../redux/actions/userActions';
+import { loginUser, isLoggedIn } from '../redux/actions/userActions';
 import axios from 'axios';
 import './splash.css';
 import Image  from '../Logo.png';
@@ -11,7 +11,7 @@ const options = {
     withCredentials: true
   };
 
-const Splash = ({ dispatch, loginUser }) => {
+const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -39,7 +39,7 @@ const Splash = ({ dispatch, loginUser }) => {
           if (res.data.valid) {
             document.cookie = `username=${username}`; //set cookies with key/value pairs
             document.cookie = `password=${password}`; //set cookies with key/value pairs
-            dispatch(loginUser(true));
+            dispatch(isLoggedIn(true));
           } else {
             document.cookie = "username=";
             document.cookie = "password=";
@@ -49,6 +49,7 @@ const Splash = ({ dispatch, loginUser }) => {
         .catch(console.log);
       };
 
+    // updates username state
     const updateEmail = (newEmail) => {
         if (newEmail.length < 20) {
           setUsername(newEmail);
@@ -62,7 +63,7 @@ const Splash = ({ dispatch, loginUser }) => {
         }
       };
 
-    if (loginUser) {
+    if (isLoggedIn) {
         return <Redirect to="/" />;
       }
 
@@ -122,6 +123,7 @@ const Splash = ({ dispatch, loginUser }) => {
 
 const mapStateToProps = state => ({
     loginUser: state.userReducer.loginUser,
+    isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(Splash);
