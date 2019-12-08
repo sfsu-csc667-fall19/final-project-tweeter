@@ -52,6 +52,7 @@ const Splash = ({ dispatch, loginUser }) => {
     const updateEmail = (newEmail) => {
         if (newEmail.length < 20) {
           setUsername(newEmail);
+          dispatch(loginUser(userName));
         }
       };
 
