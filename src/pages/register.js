@@ -1,6 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import styled from 'styled-components';
+import Logo from '../components/Logo';
+import Sidebar from '../components/Sidebar';
+import { NavigationBar } from '../components/NavigationBar';
+
+
+const Wrapper = styled.div`
+  display: block;
+  margin-top: 1em;
+  margin-left: 300px;
+`; 
 
 
 
@@ -43,6 +54,12 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+       <Wrapper>
+        <NavigationBar />
+        <Logo />
+        <Sidebar />
+        <h2>Register: </h2>
+        </Wrapper>
         <div className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal ">Register</h1>
           <label className="sr-name">First Name</label>
