@@ -1,0 +1,41 @@
+/* Side block style */
+.logo {
+    margin-left: 30px;
+    padding-top: 15px;
+    overflow: hidden;
+    float: left;
+}
+
+.logo-wrapper {
+    position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
+    height: 100%;
+    width: 180px;     /* Set the width of the sidebar */
+    background-color: #61FFD0;
+    overflow-x: hidden;     /* Disable horizontal scroll */
+    border-right: 2px solid grey;
+}
+
+/* Nav bar style */
+.nav {
+    padding: 25px 0 0 180px;
+    display: inline-block;
+    text-align: center;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav li {
+    float: left;
+    margin: 5px;
+}
+
+/* Body style */
+.body {
+    position: fixed;
+    text-align: center;
+    padding: 0 0 0 250px;
+    max-width: 50%;
+    max-height: 50%;
+}

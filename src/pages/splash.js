@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';
 import axios from 'axios';
+import './splash.css';
+import Image  from '../Logo.png';
 //import md5 from 'md5';
 
 const options = {
@@ -65,26 +67,34 @@ const Splash = ({ dispatch, isLoggedIn }) => {
 
     return (
         <div>
-            <h1>Login</h1>
-            <div>
-                <p>Username</p>
-                <input
-                    value={username}
-                    onChange={e => updateEmail(e.target.value)}
-                />
+            <div className='logo-wrapper'>
+                <img className='logo' src={Image} alt='tweeter logo' />
             </div>
-            <div>
-                <p>Password</p>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={e => updatePassword(e.target.value)}
-                />
+            <div className='nav'>
+                    <ul>
+                        <li>
+                        <input placeholder='Username'
+                            value={username}
+                            onChange={e => updateEmail(e.target.value)}
+                        />
+                        </li>
+                        <li>
+                        <input placeholder='Password'
+                            type="password"
+                            value={password}
+                            onChange={e => updatePassword(e.target.value)}
+                        />
+                        <p>Forgot Password?</p>
+                        </li>
+                        <li>
+                        <button onClick={verify}>Log in</button>
+                        </li>
+                     </ul>
+                </div>
+                <div className='body'>
+                    <h2>Tweeter</h2>
+                </div>
             </div>
-            <div>
-                <button onClick={verify}>submit</button>
-            </div>
-        </div>
       );
   };
 
