@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Login from './pages/login';
 import Register from './pages/register';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
 
@@ -24,14 +24,14 @@ const App = ({ isLoggedIn }) => {
       <Router>
         
         {/* Checks whether user is logged in to display needed components */}
-        {isLoggedIn && (
+        {!isLoggedIn && (
           <div>
           <NavigationBar />
           <Logo />
           <Sidebar />
           </div>
         )}
-        {!isLoggedIn && (
+        {isLoggedIn && (
           <Splash />
         )}
 
