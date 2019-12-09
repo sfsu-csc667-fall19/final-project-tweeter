@@ -53,6 +53,7 @@ client.connect((err) => {
             }
         });
     });
+    // this is the function that is going to log out the user 
     app.get('/profile/logout', (req, res) => {
         req.session.destroy((err) => {
             if(err) {

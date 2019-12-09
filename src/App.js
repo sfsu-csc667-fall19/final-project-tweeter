@@ -11,13 +11,25 @@ import { Favorites } from './pages/favorites';
 import { Logout } from './pages/logout';
 import { Profile } from './pages/profile';
 import Splash from './pages/splash';
-
+import axios from 'axios';
 import Logo from './components/Logo';
 import Sidebar from './components/Sidebar';
 
 
-
 const App = ({ isLoggedIn }) => {
+
+   const onLogout = () =>{
+    
+    axios.post('/logoutData', function(req , res){
+      req.Logout();
+
+      if(req.xhr){
+        return res.status(204).end();
+      }
+      return res.redirect('/');
+    })
+  }
+
   return (
 
     <React.Fragment>

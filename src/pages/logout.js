@@ -13,6 +13,10 @@ const Wrapper = styled.div`
 
 
 export const Logout = () => (
+
+  
+
+
   <Wrapper>
     <NavigationBar />
         <Logo />

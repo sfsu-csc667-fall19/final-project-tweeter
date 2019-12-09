@@ -57,6 +57,7 @@ app.post("/auth/register", (req, res) => {
     });
 });
 
+
 app.listen(port, () => {
     console.log(`Now listening on port localhost:${port}!`);
 });
