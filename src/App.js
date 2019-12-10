@@ -53,6 +53,10 @@ const App = ({ isLoggedIn }) => {
           <Route path="/profile" component={Profile} />
           <Route path="/favorites" component={Favorites} />
           <Route path="/logout" component={Logout} />
+          <Route path="/register" component={Register} />
+          {!isLoggedIn && (
+          <Route path="/splash" component={Splash} />
+          )}
           <Route exact path="/" />
         </Switch>
 

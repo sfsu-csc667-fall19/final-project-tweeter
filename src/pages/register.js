@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import Logo from '../components/Logo';
 import Sidebar from '../components/Sidebar';
 import { NavigationBar } from '../components/NavigationBar';
+import './register.css';
+import Image  from '../Logo.png';
 
 
 const Wrapper = styled.div`
@@ -14,30 +17,25 @@ const Wrapper = styled.div`
 `;
 
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      form: {
-        firstname:'',
-        lastname:'',
-        email:'',
-        username: '',
-        password: ''
-      }
-    }
-  }
+const Register = () => {
+
+  const [toggle, setToggle] = React.useState(false);
+  const [firstname, setFirstName] = React.useState('');
+  const [lastname, setLastName] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   
-  submitForm = () => {
+  const submitForm = () => {
     // console.log(this.state.form.username);
     // console.log(md5(this.state.form.password));
 
     const body = {
-      username: this.state.form.username, 
-      password: this.state.form.password
+      username: username, 
+      password: password
     };
 
-    axios.post('/register', body)
+    axios.post('/profile/register', body)
       .then((res) => {
         if (res.data.status === 'success') {
           
@@ -46,50 +44,62 @@ class Register extends React.Component {
         }
       })
       .catch(console.log);
+  };
+
+  const check = () => {
+    setToggle(true);
+  };
+
+  if (toggle) {
+    return <Redirect to="/splash" />;
   }
 
-  render() {
     return (
       <div>
+        {/* Side logo of splash page */}
+        <div className='logo-wrapper'>
+              <img className='logo' src={Image} alt='tweeter logo' />
+          </div>
        <Wrapper>
         <NavigationBar />
-        <Logo />
-        <Sidebar />
-        <h2>Register: </h2>
-        </Wrapper>
+        <div className="body-wrapper">
         <div className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal ">Register</h1>
           <label className="sr-name">First Name</label>
-          <input onChange={e => this.setState({ form: { ...this.state.form, username: e.target.value } })} 
-                  value={this.state.form.firstname} 
+          <input onChange={e => setFirstName(e.target.value) }
+                  value={firstname} 
                   type="text" 
                   className="form-control" 
-                  placeholder="firstname"/>
+                  placeholder=""/>
           <label>LastName</label>
-          <input onChange={e => this.setState({ form: { ...this.state.form, username: e.target.value } })} 
-                  value={this.state.form.lastname} 
+          <input onChange={e => setLastName(e.target.value) } 
+                  value={lastname} 
                   type="text" 
                   className="form-control" 
-                  placeholder="lastname"/>
+                  placeholder=""/>
+          <label>Username</label>
           <label className="sr-only">Username</label>
-          <input onChange={e => this.setState({ form: { ...this.state.form, username: e.target.value } })} 
-                  value={this.state.form.username} 
+          <input onChange={e => setUsername(e.target.value) }
+                  value={username} 
                   type="text" 
                   className="form-control" 
-                  placeholder="Username"/>
+                  placeholder=""/>
+           <label>Password</label>
           <label className="sr-only">Password</label>
-          <input onChange={e => this.setState({ form: { ...this.state.form, password: e.target.value } })} 
-                  value={this.state.form.password} 
+          <input onChange={e => setPassword(e.target.value) }
+                  value={password} 
                   type="password" 
                   className="form-control" 
-                  placeholder="Password" />
-          <button onClick={() => this.submitForm()} className="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-          <button  className="btn btn-lg btn-primary btn-block" type="submit">Cancel</button>
+                  placeholder="" />
+                  <div className="space"></div>
+          <button onClick={submitForm} className="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+          <button onClick={check} className="btn btn-lg btn-primary btn-block" type="submit">Cancel</button>
         </div>
+        </div>
+        </Wrapper>
       </div>
     );
   }
-}
 
 const mapStateToProps = state => ({
   
