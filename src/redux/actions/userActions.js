@@ -10,5 +10,5 @@ export const setIsLoggedIn = isLoggedIn => ({
 
 export const logoutUser = () => ({
   type: 'USER_LOGGED_OUT',
-)};
+});
 

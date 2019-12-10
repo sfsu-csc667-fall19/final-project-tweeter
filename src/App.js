@@ -36,14 +36,14 @@ const App = ({ isLoggedIn }) => {
       <Router>
         
         {/* Checks whether user is logged in to display needed components */}
-        {!isLoggedIn && (
+        {isLoggedIn && (
           <div>
           <NavigationBar />
           <Logo />
           <Sidebar />
           </div>
         )}
-        {isLoggedIn && (
+        {!isLoggedIn && (
           <Splash />
         )}
 
