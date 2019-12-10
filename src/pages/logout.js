@@ -5,8 +5,6 @@ import Logo from '../components/Logo';
 import Sidebar from '../components/Sidebar';
 import { NavigationBar } from '../components/NavigationBar';
 
-import Tweeter from './Tweeter';
-
 const Wrapper = styled.div`
   display: block;
   margin-top: 1em;
@@ -14,13 +12,17 @@ const Wrapper = styled.div`
 `; 
 
 
-export const Home = () => (
+export const Logout = () => (
+
+  
+
+
   <Wrapper>
-    <Logo />
-    <Sidebar />
-    <div className='home'>
-      <h2>Home Page</h2>
-      <Tweeter />
+    <NavigationBar />
+        <Logo />
+        <Sidebar />
+    <div><h2>Logout Page</h2>
+    <p>bunch of random text here</p>
     </div>
   </Wrapper>
 )

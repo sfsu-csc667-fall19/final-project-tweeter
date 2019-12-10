@@ -37,7 +37,13 @@ appServer.on('upgrade', (req, socket, head) => {
     console.log('upgrade ws here');
     wsProxy.ws(req, socket, head);
   });
-  
+
+const authHost = process.env.AUTH_HOST || "http://localhost:3001";
+console.log(`Auth end proxies to: ${authHost}`)
+app.get("/auth*", (req, res) => {
+  apiProxy.web(req, res, {target: authHost});
+})
+
 const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
 console.log(`Front end proxies to: ${fronEndHost}`);
 app.all('/*', (req, res) => {
