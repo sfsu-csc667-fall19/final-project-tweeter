@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 `;
 
 
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
