@@ -36,14 +36,14 @@ const App = ({ isLoggedIn }) => {
       <Router>
         
         {/* Checks whether user is logged in to display needed components */}
-        {!isLoggedIn && (
+        {isLoggedIn && (
           <div>
           <NavigationBar />
           <Logo />
           <Sidebar />
           </div>
         )}
-        {isLoggedIn && (
+        {!isLoggedIn && (
           <Splash />
         )}
 
@@ -53,6 +53,10 @@ const App = ({ isLoggedIn }) => {
           <Route path="/profile" component={Profile} />
           <Route path="/favorites" component={Favorites} />
           <Route path="/logout" component={Logout} />
+          <Route path="/register" component={Register} />
+          {!isLoggedIn && (
+          <Route path="/splash" component={Splash} />
+          )}
           <Route exact path="/" />
         </Switch>
 
