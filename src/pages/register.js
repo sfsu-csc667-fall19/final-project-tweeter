@@ -64,19 +64,21 @@ const Register = () => {
         <NavigationBar />
         <div className="body-wrapper">
         <div className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal ">Register</h1>
+          <h1 className="sign">Register</h1>
           <label className="sr-name">First Name</label>
           <input onChange={e => setFirstName(e.target.value) }
                   value={firstname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
-          <label>LastName</label>
+                  <div className="space"></div>
+          <label>Last Name</label>
           <input onChange={e => setLastName(e.target.value) } 
                   value={lastname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
+                  <div className="space"></div>
           <label>Username</label>
           <label className="sr-only">Username</label>
           <input onChange={e => setUsername(e.target.value) }
@@ -84,6 +86,7 @@ const Register = () => {
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
+                  <div className="space"></div>
            <label>Password</label>
           <label className="sr-only">Password</label>
           <input onChange={e => setPassword(e.target.value) }

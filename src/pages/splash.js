@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '../redux/actions/userActions';
+import { setIsLoggedIn, loginUser } from '../redux/actions/userActions';
 import axios from 'axios';
 import './splash.css';
 import Image  from '../Logo.png';
@@ -12,7 +12,7 @@ const options = {
     withCredentials: true
   };
 
-const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
+const Splash = ({ dispatch, isLoggedIn }) => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
