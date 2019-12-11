@@ -53,7 +53,7 @@ apiProxy.web(req, res, { target: fronEndHost });
 
 const userHost = process.env.USER_HOST || 'http://localhost:3002';
 console.log(`User end proxies to: ${userHost}`);
-app.all('/profile*', (req, res) => {
+app.all('/profile/*', (req, res) => {
   apiProxy.web(req, res, { target: userHost });
 });
 
