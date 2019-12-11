@@ -8,7 +8,4 @@ export const setIsLoggedIn = isLoggedIn => ({
     isLoggedIn,
 });
 
-export const logoutUser = () => ({
-  type: 'USER_LOGGED_OUT',
-)};
 

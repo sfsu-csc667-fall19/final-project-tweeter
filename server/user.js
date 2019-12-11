@@ -17,6 +17,13 @@ const dbName = 'tweeter';
 // Create a new MongoClient
 const client = new MongoClient(url);
 
+router.get('/logout',  (req,res) => {
+    req.logout();
+    res.redirect('/splash');
+    req.session.destroy();
+    
+})
+
 client.connect((err) => {
     if(err){
         console.log(err);
