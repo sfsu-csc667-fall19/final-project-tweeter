@@ -1,20 +1,22 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '../redux/actions/userActions';
+import { setIsLoggedIn, loginUser } from '../redux/actions/userActions';
 import axios from 'axios';
 import './splash.css';
 import Image  from '../Logo.png';
 //import md5 from 'md5';
+import { withRouter } from 'react-router-dom';
 
 const options = {
     withCredentials: true
   };
 
-const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
+const Splash = ({ dispatch, isLoggedIn }) => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [toggle, setToggle] = React.useState(false);
 
     React.useEffect(() => {
       const body = {
@@ -67,7 +69,15 @@ const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
         dispatch(setIsLoggedIn(true));
       };
 
-    if (isLoggedIn) {
+      const signup = () => {
+        setToggle(true);
+      };
+
+      if (toggle) {
+        return <Redirect to="/register" />;
+      }
+
+      if (isLoggedIn) {
         return <Redirect to="/home" />;
       }
 
@@ -101,6 +111,7 @@ const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
                         <p>Forgot Password?</p>
                     </li>
                     <li>
+                        {/* Login button */}
                         <button className="buttonFirst" onClick={verify}>Log in</button>
                     </li>
                     </ul>
@@ -113,7 +124,8 @@ const Splash = ({ dispatch, loginUser, isLoggedIn }) => {
                     <div className="SignupLogin">
                         <ul>
                             <li>
-                            <button className="buttonSecond">Sign up</button>
+                              {/* Signup button */}
+                            <button className="buttonSecond" onClick={signup}>Sign up</button>
                             </li>
                             <li>
                             <button className="buttonThird" onClick={check}>Log in</button>
