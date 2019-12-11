@@ -61,7 +61,6 @@ app.post("/auth/register", (req, res) => {
     });
 });
 
-// Returns the user's account info
 app.post("/auth/profile", (req, res) => {
     const requiredFields = ["username"];
     if (!req.body) {
@@ -81,7 +80,7 @@ app.post("/auth/profile", (req, res) => {
         }
     }
 
-    // We've got all the parameters we need, now we can get to returning the data
+     // We've got all the parameters we need, now we can get to returning the data
     authUtils.fetchUserData(req.body.username, (result) => {
         if (result) {
             res.send({
@@ -100,7 +99,6 @@ app.post("/auth/profile", (req, res) => {
         }
     });
 });
-
 
 app.listen(port, () => {
     console.log(`Now listening on port localhost:${port}!`);

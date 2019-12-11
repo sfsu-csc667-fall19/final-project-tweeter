@@ -35,7 +35,7 @@ const Register = () => {
       password: password
     };
 
-    axios.post('/profile/register', body)
+    axios.post('/register', body)
       .then((res) => {
         if (res.data.status === 'success') {
           

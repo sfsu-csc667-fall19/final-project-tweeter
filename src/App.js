@@ -5,7 +5,6 @@ import Register from './pages/register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
-
 import { Home } from './pages/home';
 import { Favorites } from './pages/favorites';
 import { Logout } from './pages/logout';
