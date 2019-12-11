@@ -97,7 +97,33 @@ const registerAccount = (username, password, firstName, lastName, callback) => {
     });
 }
 
+// Fetches the information for a specified user
+const fetchUserData = (username, callback) => {
+    // Skip reading redis, we need info from the database
+    mongoClient.connect(DATABASE_URL, (err, db) => {
+        if (err) {
+            callback(false);
+        } else {
+            let dbo = db.db(DB_NAME);
+            let params = {username: username};
+
+            dbo.collection(USER_TABLE).find(params).toArray((err, res) => {
+                if (err) {
+                    callback(false);
+                } else {
+                    if (res.length === 1) {
+                        callback(res[0]);
+                    } else {
+                        callback(false);
+                    }
+                }
+            });
+        }
+    });
+}
+
 module.exports = {
     authenticateUser: authenticateUser,
     registerAccount: registerAccount,
+    fetchUserData: fetchUserData,
 };
