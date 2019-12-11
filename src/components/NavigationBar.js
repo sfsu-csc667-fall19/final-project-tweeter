@@ -11,7 +11,7 @@ const Styles = styled.div`
     &:hover { color: white; }
   }
   .navbar-brand {
-    margin-left: 50%;
+    margin-left: 36%;
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 30px;
