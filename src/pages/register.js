@@ -27,18 +27,20 @@ const Register = () => {
 
   
   const submitForm = () => {
-    // console.log(this.state.form.username);
-    // console.log(md5(this.state.form.password));
+     console.log(this.state.form.username);
+     console.log(this.state.form.password);
 
     const body = {
       username: username, 
       password: password
     };
 
+
+    
     axios.post('/profile/register', body)
       .then((res) => {
         if (res.data.status === 'success') {
-          
+          console.log(res)
         } else {
           console.log("Error registering!");
         }
@@ -105,7 +107,7 @@ const Register = () => {
   }
 
 const mapStateToProps = state => ({
-  
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(Register);
