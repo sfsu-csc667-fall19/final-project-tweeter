@@ -22,7 +22,7 @@ client.connect( (err) => {
     console.log('Connected to db');
     const db = client.db(dbName);
 
-    app.get('/user/favorites', (req, res) => {
+    app.post('/user/favorites', (req, res) => {
         db.collection('favorites')
         .insertOne([
             {
