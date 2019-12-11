@@ -1,6 +1,6 @@
 const express = require('express');
 const router = require('router');
-const session = require("express-session");
+const session = require("express-sessions");
 
 const { MongoClient, ObjectID } = require('mongodb');
 const app = express();
