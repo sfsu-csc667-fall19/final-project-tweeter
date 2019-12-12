@@ -7,12 +7,12 @@ module.exports = { // pm2 start process.config.js
       },
       {
         name: 'messanger',
-        script: './server/kafkaTweet/kafkaProducer.js',
+        script: './server/kafkaTweet/producerKafka.js',
         watch: true,
       },
       {
         name: 'messanger',
-        script: './server/kafkaTweet/kafkaConsumer.js',
+        script: './server/kafkaTweet/consumerKafka.js',
         watch: true,
       },
       {
