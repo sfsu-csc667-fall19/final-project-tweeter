@@ -28,7 +28,7 @@ class Login extends React.Component {
       //password: md5(this.state.form.password)
     };
 
-    axios.post('/login', body)
+    axios.post('/auth/login', body)
       .then((res) => {
         //adding cookies  
         document.cookie = 'username=username';
