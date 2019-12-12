@@ -1,11 +1,9 @@
 const express = require('express');
 const router = require('router');
-const session = require("express-sessions");
-
 const { MongoClient, ObjectID } = require('mongodb');
 const app = express();
-const port = 3002;
-const bodyParser = require("body-parser");
+const port = 3000;
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -20,15 +18,6 @@ const dbName = 'tweeter';
 // Create a new MongoClient
 const client = new MongoClient(url);
 
-app.post('/profile/login', (req, res) => {
-        
-    if(req.body.username
-        && req.body.password){
-        res.json({ status: 'error'})
-    }else{
-        res.json({status: 'success', username: docs[0].username});
-    }
-});
 
 client.connect((err) => {
     if(err){

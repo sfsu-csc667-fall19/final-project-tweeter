@@ -111,7 +111,7 @@ const Register = ({ dispatch }) => {
   }
 
 const mapStateToProps = state => ({
-  
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(Register);
