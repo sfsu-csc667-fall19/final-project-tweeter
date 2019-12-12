@@ -33,18 +33,19 @@ const Register = () => {
     const body = {
       username: username, 
       password: password,
-      last_name: last_name,
-      first_name: first_name
+      first_name: firstname,
+      last_name: lastname
     };
 
     axios.post('/auth/register', body)
       .then((res) => {
-        console.log(res);
-        console.log(res);
-        if (res.data.status === 'success') {
-          dispatch(isLoggedIn(true));
+        if (res.data.success) {
+          //set the username and the password
+          
+          setToggle(true);
         } else {
           console.log("Error registering!");
+          console.log(res.data);
         }
       })
       .catch(console.log);
@@ -55,7 +56,7 @@ const Register = () => {
   };
 
   if (toggle) {
-    return <Redirect to="/splash" />;
+    return <Redirect to="/home" />;
   }
 
     return (

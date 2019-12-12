@@ -11,11 +11,11 @@ const wsProxy = httpProxy.createProxyServer({
 
 apiProxy.on('error', (err, req, res) => {
   console.log(err);
-  // res.statusCode(500).send('Internal Server Error :(');		     
+  	     
   res.send({
     error: err,
   })
-  // res.status(500).send('Internal Server Error :(');
+
 });		
 
 wsProxy.on('error', (err, req, socket) => {
@@ -49,7 +49,7 @@ appServer.on('upgrade', (req, socket, head) => {
   });
 
 
-const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
+const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:4000';
 console.log(`Front end proxies to: ${fronEndHost}`);
 app.all('/*', (req, res) => {
 // for frontend
@@ -62,5 +62,5 @@ app.all('/profile*', (req, res) => {
   apiProxy.web(req, res, { target: userHost });
 });
 
-appServer.listen(4001);
+appServer.listen(4000);
 console.log('Gateway started');
