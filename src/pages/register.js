@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { setIsLoggedIn, loginUser } from '../redux/actions/userActions';
 import axios from 'axios';
 import styled from 'styled-components';
 import Logo from '../components/Logo';
@@ -17,33 +18,35 @@ const Wrapper = styled.div`
 `;
 
 
-const Register = () => {
+const Register = ({ dispatch }) => {
 
   const [toggle, setToggle] = React.useState(false);
-  const [first_name, setFirstName] = React.useState('');
-  const [last_name, setLastName] = React.useState('');
+  const [firstname, setFirstName] = React.useState('');
+  const [lastname, setLastName] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   
-  const submitForm = ({ dispatch, isLoggedIn }) => {
+  const submitForm = () => {
     // console.log(this.state.form.username);
     // console.log(md5(this.state.form.password));
 
     const body = {
       username: username, 
       password: password,
-      last_name: last_name,
-      first_name: first_name,
+      first_name: firstname,
+      last_name: lastname
     };
 
     axios.post('/auth/register', body)
       .then((res) => {
-        console.log(res);
-        if (res.data.status === 'success') {
-          dispatch(isLoggedIn(true));
+        if (res.data.success) {
+          //set the username and the password
+          dispatch(setIsLoggedIn(true));
+          setToggle(true);
         } else {
           console.log("Error registering!");
+          console.log(res.data);
         }
       })
       .catch(console.log);
@@ -54,7 +57,7 @@ const Register = () => {
   };
 
   if (toggle) {
-    return <Redirect to="/splash" />;
+    return <Redirect to="/home" />;
   }
 
     return (
@@ -70,14 +73,14 @@ const Register = () => {
           <h1 className="sign">Register</h1>
           <label className="sr-name">First Name</label>
           <input onChange={e => setFirstName(e.target.value) }
-                  value={first_name} 
+                  value={firstname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
                   <div className="space"></div>
           <label>Last Name</label>
           <input onChange={e => setLastName(e.target.value) } 
-                  value={last_name} 
+                  value={lastname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
@@ -112,4 +115,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Register);
-
