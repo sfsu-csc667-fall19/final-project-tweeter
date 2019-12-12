@@ -16,6 +16,11 @@ module.exports = { // pm2 start process.config.js
         watch: true,
       },
       {
+        name: 'frontend',
+        script: './server/frontend.js',
+        watch: true,
+      },
+      {
         name: 'messanger',
         script: './server/mongo-service.js',
         watch: true,
