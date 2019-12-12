@@ -3,7 +3,7 @@ import Tweets from './tweets';
 import Loader from './loader';
 import NotificationBar from './notificationbar';
 import WriteTweet from './writetweet';
-
+import axios from 'axios';
 import '../App.css';
 
 const Tweeter = () => {
@@ -32,10 +32,10 @@ const Tweeter = () => {
     const loadPagedTweets = (tweetsResponse) => {
         // If we still have tweets...
         if(tweetsResponse.length > 0) {
-        // Get current application state
-        var updated = tweets;
-        // Push them onto the end of the current tweets array
-        tweetsResponse.forEach(function(tweetsResponse){
+            // Get current application state
+            var updated = tweets;
+            // Push them onto the end of the current tweets array
+            tweetsResponse.forEach(function(tweetsResponse){
             updated.push(tweetsResponse);
         });
             // This app is so fast, I actually use a timeout for dramatic effect
@@ -107,10 +107,19 @@ const Tweeter = () => {
         setTweets(updated);
         setCount(0);
     }
+    
+    const getTweet = () => {
+        axios.get(`http://localhost:4005/tweets/all`)
+        .then((res) => {
+          console.log(res.data);
+          setTweets(res.data)
+        })
+        .catch(console.log);
+    };
 
     React.useEffect(() => {
+        getTweet()
         /*
-
         // Initialize socket.io
         var socket = new WebSocket.Server({ port: 6001 }); ///CAMBIAR
 
@@ -127,12 +136,11 @@ const Tweeter = () => {
         window.addEventListener('scroll', checkWindowScroll);
     },[]);
 
-    var tweetsExample = [{active:true, author:"Jesus", screenname:"jesus47", body:"Test of tweet"},{active:true, author:"Yisas",screenname:"YisasOfficial", body:"Hello world"}];
 
     return (
         <div className="tweets-app">
             <WriteTweet />
-            <Tweets tweets={tweetsExample} />
+            <Tweets tweets={tweets} />
             <Loader paging={paging}/>
             <NotificationBar count={count} onShowNewTweets={showNewTweets}/>
         </div>

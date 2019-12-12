@@ -30,7 +30,7 @@
 Get latest images
 - docker-compose pull 
 
-# Start services
+# Start docker
 - docker swarm init
 - docker stack deploy -c docker-compose.yml kafka-demo
 
@@ -40,11 +40,12 @@ Get latest images
 
 # MongoDB
 - go to the mongodb directory
-- Manually start with bin/mongod --dbpath <path to db>
+- Manually start with bin/mongod --dbpath `path to db`
 
-
-
-
+# Redis
+- cd to download dirctory
+- `make`
+- `./src/redis-server`
 
 # Getting the app up and running
 - Install dependencies: 
