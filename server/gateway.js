@@ -11,13 +11,22 @@ const wsProxy = httpProxy.createProxyServer({
 
 apiProxy.on('error', (err, req, res) => {
     console.log(err);
-    res.statusCode(500).send('Internal Server Error :(');
+    res.send({
+      error: err,
+    })
+    // res.status(500).send('Internal Server Error :(');
 });
 
 wsProxy.on('error', (err, req, socket) => {
     console.log(err);
     console.log('web socket failed');
     socket.end();
+})
+
+const authHost = process.env.AUTH_HOST || "http://localhost:3001";
+console.log(`Auth end proxies to: ${authHost}`)
+app.all("/auth*", (req, res) => {
+  apiProxy.web(req, res, {target: authHost});
 })
 
 const messengerHost = process.env.MESSANGER_HOST || 'http://localhost:5000';
@@ -38,11 +47,6 @@ appServer.on('upgrade', (req, socket, head) => {
     wsProxy.ws(req, socket, head);
   });
 
-const authHost = process.env.AUTH_HOST || "http://localhost:3001";
-console.log(`Auth end proxies to: ${authHost}`)
-app.get("/auth*", (req, res) => {
-  apiProxy.web(req, res, {target: authHost});
-})
 
 const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
 console.log(`Front end proxies to: ${fronEndHost}`);
@@ -53,7 +57,7 @@ apiProxy.web(req, res, { target: fronEndHost });
 
 const userHost = process.env.USER_HOST || 'http://localhost:3002';
 console.log(`User end proxies to: ${userHost}`);
-app.all('/profile*', (req, res) => {
+app.all('/profile/*', (req, res) => {
   apiProxy.web(req, res, { target: userHost });
 });
 
