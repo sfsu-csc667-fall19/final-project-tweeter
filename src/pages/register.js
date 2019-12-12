@@ -34,7 +34,7 @@ const Register = () => {
       username: username, 
       password: password,
       last_name: last_name,
-      first_name: first_name
+      first_name: first_name,
     };
 
     axios.post('/auth/register', body)

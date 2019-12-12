@@ -1,19 +1,23 @@
 // express
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3005;
+
+var cors = require('cors')
+ 
+app.use(cors())
 app.use(express.urlencoded());
 app.use(express.json());
 
 // kafka
-const KafkaProducer = require('./KafkaProducer.js');
+const KafkaProducer = require('./producer');
 const producer = new KafkaProducer('myTopic');
 
 producer.connect(() => {
   console.log('Connected to kafka!');
-  app.get('/new_tweet', function(req, res) {
-    console.log('Test request!');
-    producer.send(req.query.text);
+  app.post('/new_tweet', function(req, res) {
+    console.log('Request body:', req.body);
+    producer.send(req.body.text);
     res.send("OK!");
   })
 });
