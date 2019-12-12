@@ -109,7 +109,7 @@ const Tweeter = () => {
     }
     
     const getTweet = () => {
-        axios.get(`http://18.221.99.42:4005/tweets/all`)
+        axios.get(`http://18.224.179.182:4005/tweets/all`)
         .then((res) => {
           console.log(res.data);
           setTweets(res.data)

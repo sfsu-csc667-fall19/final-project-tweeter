@@ -9,7 +9,7 @@ const WriteTweet = () => {
     const [text, setText] = React.useState('');
 
     const addTweet = () => {
-        axios.post(`http://18.221.99.42:3005/new_tweet`, {
+        axios.post(`http://18.224.179.182:3005/new_tweet`, {
           text
         })
         .then((res) => {
