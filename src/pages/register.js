@@ -41,7 +41,7 @@ const Register = () => {
       .then((res) => {
         if (res.data.success) {
           //set the username and the password
-
+          
           setToggle(true);
         } else {
           console.log("Error registering!");

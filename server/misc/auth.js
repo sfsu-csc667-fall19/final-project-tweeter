@@ -1,7 +1,6 @@
 // Some useful functions for authenticating requests
 const redis = require("redis");
 const mongo = require("mongodb");
-
 const DATABASE_URL = "mongodb://localhost:27017";
 const DB_NAME = "tweeter";
 const USER_TABLE = "accounts";
