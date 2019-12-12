@@ -10,9 +10,7 @@ const authUtils = require("./misc/auth");
 
 let port = 3001; // might need to be changed
 const app = express();
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.json());
 
 // Handles account logging in
 app.post("/auth/login", (req, res) => {

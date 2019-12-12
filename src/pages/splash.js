@@ -6,7 +6,6 @@ import axios from 'axios';
 import './splash.css';
 import Image  from '../Logo.png';
 //import md5 from 'md5';
-import { withRouter } from 'react-router-dom';
 
 const options = {
     withCredentials: true

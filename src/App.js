@@ -1,26 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Login from './pages/login';
 import Register from './pages/register';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
 import { Home } from './pages/home';
 import { Favorites } from './pages/favorites';
 import { Logout } from './pages/logout';
 import { Profile } from './pages/profile';
 import Splash from './pages/splash';
-import axios from 'axios';
 import Logo from './components/Logo';
 import Sidebar from './components/Sidebar';
-import splash from './pages/splash';
 
 
 const App = ({ isLoggedIn }) => {
 
-  const handleSubmit = () => {
-   mapStateToProps.history.push("/")
-  }
+  
 
   return (
 
@@ -44,7 +39,6 @@ const App = ({ isLoggedIn }) => {
           <Route path="/home" component={Home} />
           <Route path="/profile" component={Profile} />
           <Route path="/favorites" component={Favorites} />
-          <Route path="/splash" component={handleSubmit} />
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           {!isLoggedIn && (
