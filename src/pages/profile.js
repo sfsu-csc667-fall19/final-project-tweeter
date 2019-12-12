@@ -14,6 +14,7 @@ const GridWrapper = styled.div`
   display: block;
   margin-top: 1em;
   margin-left: 300px;
+  text-align: center;
 `; 
 
 const ImageWrapper = styled.div`
@@ -30,7 +31,6 @@ export const Profile = () => (
    <ImageWrapper>
     <img src={Image} alt='profile pic' />
     </ImageWrapper>
-    <ProfileInput/>
     <ProfileList />
 
     

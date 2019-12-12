@@ -40,6 +40,7 @@ const Register = () => {
     axios.post('/auth/register', body)
       .then((res) => {
         console.log(res);
+        console.log(res);
         if (res.data.status === 'success') {
           dispatch(isLoggedIn(true));
         } else {
