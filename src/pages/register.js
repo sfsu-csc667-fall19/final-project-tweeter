@@ -20,25 +20,28 @@ const Wrapper = styled.div`
 const Register = () => {
 
   const [toggle, setToggle] = React.useState(false);
-  const [firstname, setFirstName] = React.useState('');
-  const [lastname, setLastName] = React.useState('');
+  const [first_name, setFirstName] = React.useState('');
+  const [last_name, setLastName] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   
-  const submitForm = () => {
+  const submitForm = ({ dispatch, isLoggedIn }) => {
     // console.log(this.state.form.username);
     // console.log(md5(this.state.form.password));
 
     const body = {
       username: username, 
-      password: password
+      password: password,
+      last_name: last_name,
+      first_name: first_name
     };
 
-    axios.post('/profile/register', body)
+    axios.post('/auth/register', body)
       .then((res) => {
+        console.log(res);
         if (res.data.status === 'success') {
-          
+          dispatch(isLoggedIn(true));
         } else {
           console.log("Error registering!");
         }
@@ -67,14 +70,14 @@ const Register = () => {
           <h1 className="sign">Register</h1>
           <label className="sr-name">First Name</label>
           <input onChange={e => setFirstName(e.target.value) }
-                  value={firstname} 
+                  value={first_name} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
                   <div className="space"></div>
           <label>Last Name</label>
           <input onChange={e => setLastName(e.target.value) } 
-                  value={lastname} 
+                  value={last_name} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>

@@ -5,7 +5,6 @@ const session = require("express-sessions");
 const { MongoClient, ObjectID } = require('mongodb');
 const app = express();
 const port = 3002;
-app.use(express.urlencoded());
 app.use(express.json());
 
 // Connection URL
@@ -26,6 +25,16 @@ client.connect((err) => {
     const db = client.db(dbName);
 
     app.post('/profile/login', (req, res) => {
+        
+            if(req.body.username
+                && req.body.password){
+                res.json({ status: 'error'})
+            }else{
+                res.json({status: 'success', username: docs[0].username});
+            }
+    });
+
+    app.post('/profile/login', (req, res) => {
         db.collection('users')
         .find({username: releaseEvents.body.username })
         .toArray()
@@ -42,6 +51,7 @@ client.connect((err) => {
     });
 
     app.post('/profile/register', (req, res) => {
+        console.log(req.body.headers);
         db.collection('users')
         .insertMany([
             {username: req.body.username, password: req.body.password}
