@@ -34,6 +34,10 @@ app.post("/auth/login", (req, res) => {
 });
 
 // Handles account registration
+
+// app.post("/auth/logout" , (req,res) => {
+//     res.redirect('/splash')
+// });
 app.post("/auth/register", (req, res) => {
     const requiredFields = ["username", "first_name", "last_name", "password"];
     for (let i = 0; i < requiredFields.length; i++) {

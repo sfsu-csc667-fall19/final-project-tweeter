@@ -63,4 +63,4 @@ app.all('/profile/*', (req, res) => {
 });
 
 appServer.listen(4000);
-console.log('Gateway started');
+console.log('Gateway started at port 4000!');

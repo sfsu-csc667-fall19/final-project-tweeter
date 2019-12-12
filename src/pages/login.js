@@ -30,14 +30,16 @@ class Login extends React.Component {
         //adding cookies  
         document.cookie = 'username=username';
         document.cookie = 'password=password';
-        console.log('This is ')
+        
 
-        if (res.data.status === 'success') {
+        if (res.data.status) {
           //this.props.dispatch(res.datanpm)
           document.cookie = `username=${this.state.form.username}`; //set cookies with key/value pairs
           document.cookie = `password=${this.state.formpassword}`; //set cookies with key/value pairs
+          console.log(res.data);
         } else {
           console.log("Error login!");
+          console.log(res.data);
         }
       })
       .catch(console.log);

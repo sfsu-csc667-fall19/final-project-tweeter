@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter, Redirect } from "react-router-dom";
 
 const StyledSideNav = styled.div`   
     position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
@@ -43,11 +43,12 @@ class SideNav extends React.Component {
                   key: 3
                 },
                 {
-                    path: '/logout',
+                    path: '/splash',
                     name: 'Logout',
                    // css: 'fas fa-hashtag',
                     text: "Logout",
-                    key: 4
+                    key: 4,
+                    
                   },
                   
               ]
@@ -57,6 +58,10 @@ class SideNav extends React.Component {
     onItemClick = (path) => {
         this.setState({ activePath: path });
     }
+    setTempLogout = () => {
+        return <Redirect to="/home" />;
+      }
+    
 
     render() {
         const { items, activePath } = this.state;

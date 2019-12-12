@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Logo from '../components/Logo';
 import Sidebar from '../components/Sidebar';
 import { NavigationBar } from '../components/NavigationBar';
