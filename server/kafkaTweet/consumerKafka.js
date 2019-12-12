@@ -1,4 +1,4 @@
-const KafkaConsumer = require('./KafkaConsumer');
+const KafkaConsumer = require('./consumer');
 const consumer = new KafkaConsumer(['myTopic', 'myOtherTopic']);
 
 // database
@@ -26,7 +26,10 @@ client.connect((err) => {
           _id: ObjectID(Date.now()),
           message: message.value //JSON later with post?
         }
-      ]);
+      ], function(err) {
+        // err? message.json({status: "error"}) : message.json({status: "success"});
+        console.log(err)
+      });
     });
 });
 consumer.connect();
