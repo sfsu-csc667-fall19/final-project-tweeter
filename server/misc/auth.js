@@ -19,9 +19,7 @@ const authenticateUser = (username, password, callback) => {
                     callback(false);
                     return;
                 }
-
                 var dbo = db.db(DB_NAME);
-
                 // We want to check for the specific parameters:
                 let params = {
                     username: username,
@@ -69,7 +67,6 @@ const registerAccount = (username, password, firstName, lastName, callback) => {
                         callback(false);
                         return;
                     }
-
                     let data = {
                         username: username,
                         password: password,
