@@ -1,10 +1,10 @@
 const express = require('express');
-
-const session = require("express-session");
+const router = require('router');
+const session = require("express-sessions");
 
 const { MongoClient, ObjectID } = require('mongodb');
 const app = express();
-const port = 4000;
+const port = 3002;
 app.use(express.urlencoded());
 app.use(express.json());
 
@@ -53,6 +53,7 @@ client.connect((err) => {
             }
         });
     });
+    // this is the function that is going to log out the user 
     app.get('/profile/logout', (req, res) => {
         req.session.destroy((err) => {
             if(err) {
