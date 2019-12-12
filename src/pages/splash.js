@@ -23,7 +23,7 @@ const Splash = ({ dispatch, isLoggedIn }) => {
         username: '',
         password: '',
       };
-      axios.post('/profile/', body, options)
+      axios.post('/', body, options)
           .then((res) => {
             console.log(res)
           })
