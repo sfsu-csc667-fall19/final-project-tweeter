@@ -28,9 +28,9 @@ export const Profile = () => (
         <Logo />
         <Sidebar />
     <div><h2>Profile Page</h2>
-   <ImageWrapper>
+   {/*<ImageWrapper>
     <img src={Image} alt='profile pic' />
-    </ImageWrapper>
+   </ImageWrapper>*/}
     <ProfileList />
 
     

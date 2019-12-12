@@ -20,8 +20,8 @@ const Wrapper = styled.div`
 const Register = () => {
 
   const [toggle, setToggle] = React.useState(false);
-  const [first_name, setFirstName] = React.useState('');
-  const [last_name, setLastName] = React.useState('');
+  const [firstname, setFirstName] = React.useState('');
+  const [lastname, setLastName] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -72,14 +72,14 @@ const Register = () => {
           <h1 className="sign">Register</h1>
           <label className="sr-name">First Name</label>
           <input onChange={e => setFirstName(e.target.value) }
-                  value={first_name} 
+                  value={firstname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>
                   <div className="space"></div>
           <label>Last Name</label>
           <input onChange={e => setLastName(e.target.value) } 
-                  value={last_name} 
+                  value={lastname} 
                   type="text" 
                   className="form-control" 
                   placeholder=""/>

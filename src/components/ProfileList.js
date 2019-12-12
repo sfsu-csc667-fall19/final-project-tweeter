@@ -1,4 +1,4 @@
-
+/*
 import React from 'react';
 import axios from 'axios';
 
@@ -36,11 +36,11 @@ export default class ProfileList extends React.Component {
         )
     }
 }
+*/
 
 
 
 
-/*
 import React from "react";
 
 export default class ProfileList extends React.Component {
@@ -68,12 +68,13 @@ export default class ProfileList extends React.Component {
         return (
             <div>
                 <img src={this.state.person.picture.large} />
-                <div>First Name: {this.state.person.name.title}</div>
-                <div>last{this.state.person.name.first}</div>
-                <div>{this.state.person.name.last}</div>
+                <div>First Name: {this.state.person.name.first}</div>
+                <div>Last Name: {this.state.person.name.last}</div>
+                <div>User Name: {this.state.person.login.username}</div>
+
+
                 
             </div>
         );
     }
 }
-*/
