@@ -6,17 +6,22 @@ module.exports = { // pm2 start process.config.js
         watch: true,
       },
       {
-        name: 'messanger',
+        name: 'producerKafka',
         script: './server/kafkaTweet/producerKafka.js',
         watch: true,
       },
       {
-        name: 'messanger',
+        name: 'consumerKafka',
         script: './server/kafkaTweet/consumerKafka.js',
         watch: true,
       },
       {
-        name: 'messanger',
+        name: 'frontend',
+        script: './server/frontend.js',
+        watch: true,
+      },
+      {
+        name: 'mongo-service',
         script: './server/mongo-service.js',
         watch: true,
       },
@@ -26,7 +31,13 @@ module.exports = { // pm2 start process.config.js
         watch: true,
       },
       {
-        name: 'user',
+        name: 'favorites',
+        script: './server/favorites.js',
+        watch: true,
+      },
+      
+      {
+        name: 'users',
         script: './server/auth.js',
         watch: true,
       }
