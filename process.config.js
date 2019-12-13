@@ -26,11 +26,6 @@ module.exports = { // pm2 start process.config.js
         watch: true,
       },
       {
-        name: 'websocket',
-        script: './server/websocket.js',
-        watch: true,
-      },
-      {
         name: 'favorites',
         script: './server/favorites.js',
         watch: true,
