@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-//import md5 from 'md5';
-import { loginUser} from '../redux/actions/userActions';
-
 import Logo from '../components/Logo';
 import Sidebar from '../components/Sidebar';
 import { NavigationBar } from '../components/NavigationBar';
@@ -25,14 +22,15 @@ class Login extends React.Component {
 
     const body = {
       username: this.state.form.username, 
-      //password: md5(this.state.form.password)
+      password: this.state.form.password,
     };
 
-    axios.post('/login', body)
+    axios.post('/auth/login', body)
       .then((res) => {
         //adding cookies  
         document.cookie = 'username=username';
         document.cookie = 'password=password';
+        console.log('This is ')
 
         if (res.data.status === 'success') {
           //this.props.dispatch(res.datanpm)

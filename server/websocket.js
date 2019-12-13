@@ -8,11 +8,17 @@ wss.on('connection', (ws) => {
   console.log('Someone has connected');
 });
 
-client.on('message', (channel, message) => { // all channels for now
-  console.log(`Client is listening on ${message}`);
+wss.on("message", (data) => {
   wss.clients.forEach((client) => {
-    client.send(message);
-  });
+    client.send(data);
+  })
 });
 
-client.subscribe('testPublish');
+// client.on('message', (channel, message) => { // all channels for now
+//   console.log(`Client is listening on ${message}`);
+//   wss.clients.forEach((client) => {
+//     client.send(message);
+//   });
+// });
+//
+// client.subscribe('testPublish');

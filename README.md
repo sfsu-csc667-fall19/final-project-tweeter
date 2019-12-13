@@ -37,6 +37,7 @@ Get latest images
 # Run Kafka files
 - node server/kafkaTweet/producerKafka.js
 - node server/kafkaTweet/consumerKafka.js
+- node server/mongo-service.js
 
 # MongoDB
 - go to the mongodb directory
