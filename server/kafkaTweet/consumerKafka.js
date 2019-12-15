@@ -29,12 +29,12 @@ client.connect((err) => {
 
     // kafka
     consumer.on('message', (message) => {
-        console.log(message.value.text + " from " + message.value.username);
+        let data = JSON.parse(message.value);
         db.collection('kafkaTweet')
             .insertMany([
                 {
                     _id: ObjectID(Date.now()),
-                    message: message.value.text //JSON later with post?
+                    message: data.text //JSON later with post?
                 }
             ], function (err) {
                 // err? message.json({status: "error"}) : message.json({status: "success"});
@@ -45,7 +45,7 @@ client.connect((err) => {
         wss.clients.forEach((wclient) => {
             wclient.send(JSON.stringify({
                 type: "NEW_TWEET",
-                content: message.value
+                content: data
             }));
         });
     });

@@ -25,7 +25,7 @@ ws.onmessage = (evt) => {
     // Check what we need to do with this message
     if (data.type === "NEW_TWEET") {
         console.log(data.content);
-        let subdata = JSON.parse(data.content.value);
+        let subdata = data.content;
         let newTweet = `<li>${subdata.username}: ${subdata.text}</li>`;
         store.dispatch(addTweet(newTweet));
     }
