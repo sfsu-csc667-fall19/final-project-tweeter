@@ -1,38 +1,32 @@
 module.exports = { // pm2 start process.config.js
     apps: [
       {
-        name: 'gateway',
+        name: 'Gateway-Service',
         script: './server/gateway.js',
         watch: true,
       },
       {
-        name: 'producerKafka',
+        name: 'Producer Kafka-Service',
         script: './server/kafkaTweet/producerKafka.js',
         watch: true,
       },
       {
-        name: 'consumerKafka',
+        name: 'Consumer Kafka-Service',
         script: './server/kafkaTweet/consumerKafka.js',
         watch: true,
       },
       {
-        name: 'frontend',
+        name: 'Frontend-Service',
         script: './server/frontend.js',
         watch: true,
       },
       {
-        name: 'mongo-service',
+        name: 'Mongo-Service',
         script: './server/mongo-service.js',
         watch: true,
       },
       {
-        name: 'favorites',
-        script: './server/favorites.js',
-        watch: true,
-      },
-      
-      {
-        name: 'users',
+        name: 'Auth-Service',
         script: './server/auth.js',
         watch: true,
       }
