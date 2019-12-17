@@ -66,7 +66,7 @@ class Login extends React.Component {
                   type="password" 
                   className="form-control" 
                   placeholder="Password" />
-          <button onClick={() => this.submitForm()} className="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+          <button onClick={this.submitForm} className="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </div>
       </div>
     );
