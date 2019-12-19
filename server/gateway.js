@@ -49,7 +49,7 @@ appServer.on('upgrade', (req, socket, head) => {
   });
 
 
-const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:4000';
+const fronEndHost = process.env.FRONT_END_HOST || 'http://localhost:3000';
 console.log(`Front end proxies to: ${fronEndHost}`);
 app.all('/*', (req, res) => {
 // for frontend

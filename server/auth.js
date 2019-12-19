@@ -1,9 +1,9 @@
 // Auth backend
 // Checks credentials, etc.
 //
-// Information stored in the database in the following ways:
+// Information stored in redis in the following ways:
 // login_<username> = <password>
-// key_<username> = <login token>
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const authUtils = require("./misc/auth");
@@ -68,6 +68,8 @@ app.post("/auth/profile", (req, res) => {
         });
         return;
     }
+
+    // Search through the fields and make sure that the client supplied each one
     for (let i = 0; i < requiredFields.length; i++) {
         if (!(requiredFields[i] in req.body)) {
             res.send({
@@ -78,7 +80,7 @@ app.post("/auth/profile", (req, res) => {
         }
     }
 
-     // We've got all the parameters we need, now we can get to returning the data
+    // We've got all the parameters we need, now we can get to returning the data
     authUtils.fetchUserData(req.body.username, (result) => {
         if (result) {
             res.send({

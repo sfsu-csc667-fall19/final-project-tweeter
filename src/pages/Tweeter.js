@@ -146,4 +146,5 @@ const Tweeter = () => {
         </div>
     );
 }
+
 export default Tweeter;
