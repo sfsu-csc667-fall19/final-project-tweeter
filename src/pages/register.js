@@ -26,21 +26,26 @@ const Register = () => {
   const [password, setPassword] = React.useState('');
 
   
-  const submitForm = () => {
+  const submitForm = ({ dispatch, isLoggedIn }) => {
     // console.log(this.state.form.username);
     // console.log(md5(this.state.form.password));
 
     const body = {
       username: username, 
-      password: password
+      password: password,
+      first_name: firstname,
+      last_name: lastname
     };
 
-    axios.post('/profile/register', body)
+    axios.post('/auth/register', body)
       .then((res) => {
-        if (res.data.status === 'success') {
+        if (res.data.success) {
+          //set the username and the password
           
+          setToggle(true);
         } else {
           console.log("Error registering!");
+          console.log(res.data);
         }
       })
       .catch(console.log);
@@ -51,7 +56,7 @@ const Register = () => {
   };
 
   if (toggle) {
-    return <Redirect to="/splash" />;
+    return <Redirect to="/home" />;
   }
 
     return (
@@ -105,7 +110,7 @@ const Register = () => {
   }
 
 const mapStateToProps = state => ({
-  
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(Register);

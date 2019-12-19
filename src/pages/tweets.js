@@ -1,17 +1,18 @@
 import React from 'react';
-import Tweet from './tweet';
+import { connect } from 'react-redux';
 
-const Tweets = (props) => {
+const Tweets = ({tweets}) => {
+
     // Build list items of single tweet components using map
-    var content = props.tweets.map(function(tweet){
-        return (
-          <Tweet key={tweet._id} tweet={tweet} />
-        )
-    });
-    
-    return(
-        <ul className="tweets">{content}</ul>
-    )
+    return (
+        <ul className="tweets">{tweets}</ul>
+    );
+};
 
-}
-export default Tweets;
+const mapStateToProps = (state) => {
+    return {
+        tweets: state.tweetReducer.tweets
+    };
+};
+
+export default connect(mapStateToProps)(Tweets);
